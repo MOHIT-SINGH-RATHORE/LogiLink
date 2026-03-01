@@ -1,6 +1,7 @@
 package com.logilink.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -12,12 +13,8 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/register")
-    public User registerUser(@RequestBody User newUser) {
-        return userRepository.save(newUser);
-    }
-
-    @GetMapping
+    @GetMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

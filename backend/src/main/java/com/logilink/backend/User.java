@@ -6,7 +6,8 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "users")
-@Getter @Setter
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -16,4 +17,11 @@ public class User {
     private String username;
     private String email;
     private String password;
+
+    private String name;
+    private String address;
+    private String phoneNumber;
+
+    @Enumerated(EnumType.STRING)
+    private com.logilink.backend.entity.Role role = com.logilink.backend.entity.Role.USER;
 }

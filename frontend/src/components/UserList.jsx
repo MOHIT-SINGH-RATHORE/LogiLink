@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import api from '../api';
+import api from './api';
 
 function UserList({ refreshTrigger }) {
     const [users, setUsers] = useState([]);
@@ -21,15 +21,21 @@ function UserList({ refreshTrigger }) {
     }, [refreshTrigger]);
 
     return (
-        <div style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
-            <h2>Registered Users</h2>
+        <div style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px', backgroundColor: '#fff' }}>
+            <h2 style={{ color: '#333', marginTop: 0 }}>Registered Users</h2>
             {users.length === 0 ? (
-                <p>No users found.</p>
+                <p style={{ color: '#666' }}>No users found.</p>
             ) : (
                 <ul style={{ listStyleType: 'none', padding: 0 }}>
                     {users.map((user) => (
-                        <li key={user.id} style={{ background: '#f9f9f9', margin: '5px 0', padding: '10px', borderBottom: '1px solid #eee' }}>
-                            <strong>{user.username}</strong> ({user.email})
+                        <li key={user.id} style={{ 
+                            background: '#f9f9f9', 
+                            margin: '5px 0', 
+                            padding: '10px', 
+                            borderBottom: '1px solid #eee',
+                            color: '#333'
+                        }}>
+                            <strong style={{ color: '#213547' }}>{user.username}</strong> <span style={{ color: '#666' }}>({user.email})</span>
                         </li>
                     ))}
                 </ul>
